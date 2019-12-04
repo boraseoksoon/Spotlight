@@ -13,7 +13,7 @@ class ItemListViewModel: ObservableObject {
     @Published var showingAlert: Bool = false
     @Published var errorMessage: String = ""
     
-    var searchedItems: [Photo] = []
+    @Published var searchedItems: [Photo] = []
     
     var searchText: String = "" {
         didSet {

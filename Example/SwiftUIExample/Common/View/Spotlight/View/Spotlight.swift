@@ -51,7 +51,6 @@ struct Spotlight<Content>: View where Content: View {
                     self.content()
                         .disabled(false)
                         .blur(radius: self.isSearching ? 10.0 : 0)
-                        // .edgesIgnoringSafeArea(.top)
 
                     if self.isSearching {
                         self.searchBar
@@ -73,7 +72,7 @@ extension Spotlight {
                 TextField("Search Anything",
                           text: self.$spotlightVM.searchingText,
                           onCommit: {
-                            withAnimation(.easeIn(duration: 0.3)) {
+                            withAnimation(.easeIn(duration: 1.0)) {
                                 self.isSearching = false
                             }
                     })

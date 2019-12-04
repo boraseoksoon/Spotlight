@@ -26,10 +26,7 @@ struct ItemListView: View {
         /// Step2: 😆 Declare `Spotlight` externally.
         Spotlight(searchKeywords:viewModel.searchableItems,
                   isSearching:$isSearching,
-                  didChangeSearchText: {
-                    print("here : \($0)")
-                    self.viewModel.searchText = $0
-                  },
+                  didChangeSearchText: { self.viewModel.searchText = $0 },
                   didTapSearchItem: { self.viewModel.searchText = $0 }) {
                     /// Step3: 😎 Let's wrap SwiftUI Views in it using trailing closure.
                     self.navigationView
