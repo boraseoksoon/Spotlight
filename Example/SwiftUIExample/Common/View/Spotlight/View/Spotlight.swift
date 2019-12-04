@@ -12,10 +12,14 @@ struct Spotlight<Content>: View where Content: View {
     @ObservedObject var spotlightVM: SpotlightVM
     @Binding var isSearching: Bool
 
+    var didChangeSearchText: (String) -> Void
+    var didTapSearchItem: (String) -> Void
     var content: () -> Content
     
-    init(founds: [String],
+    init(searchKeywords: [String],
          isSearching: Binding<Bool>,
+         didChangeSearchText: @escaping (String) -> Void,
+         didTapSearchItem: @escaping (String) -> Void,
          wrappingClosure: @escaping () -> Content) {
         
         UIBarButtonItem.appearance().tintColor = UIColor.blue
@@ -33,7 +37,11 @@ struct Spotlight<Content>: View where Content: View {
         self.content = wrappingClosure
         self._isSearching = isSearching
         
-        self.spotlightVM = SpotlightVM(searchKeywords: founds)
+        self.didTapSearchItem = didTapSearchItem
+        self.didChangeSearchText = didChangeSearchText
+        
+        self.spotlightVM = SpotlightVM(searchKeywords: searchKeywords,
+                                       didChangeSearchText: didChangeSearchText)
     }
 
     var body: some View {
@@ -91,6 +99,7 @@ extension Spotlight {
                         
             List(self.spotlightVM.founds, id: \.self) { found in
                 Button(action: {
+                    self.didTapSearchItem(found)
                     self.spotlightVM.searchingText = found
                 }) {
                     Text(found)

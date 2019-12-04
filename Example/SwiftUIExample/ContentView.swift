@@ -10,15 +10,9 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @ObservedObject var ItemListViewModel: ItemListViewModel
-    
-    init(ItemListViewModel: ItemListViewModel) {
-        self.ItemListViewModel = ItemListViewModel
-    }
-    
     var body: some View {
         TabView {
-            ItemList(viewModel: ItemListViewModel)
+            ItemListView()
                 .tabItem {
                     Image(systemName:"safari")
                     Text("Photos")

@@ -8,26 +8,37 @@
 
 import SwiftUI
 
-struct ItemList: View {
+/// Step1: 😙 import `Spotlight`
+// import Spotlight
+
+struct ItemListView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @ObservedObject var viewModel: ItemListViewModel
     @State private var isSearching = false
     
-    init(viewModel: ItemListViewModel) {
+    init(viewModel: ItemListViewModel = ItemListViewModel()) {
+        /// This is example view-mdel implemented for demo purpose.
         self.viewModel = viewModel
     }
     
     var body: some View {
-        Spotlight(founds:viewModel.searchableItems,
-                  isSearching:$isSearching) {
-            self.navigationView
+        /// Step2: 😆 Declare `Spotlight` externally.
+        Spotlight(searchKeywords:viewModel.searchableItems,
+                  isSearching:$isSearching,
+                  didChangeSearchText: {
+                    print("here : \($0)")
+                    self.viewModel.searchText = $0
+                  },
+                  didTapSearchItem: { self.viewModel.searchText = $0 }) {
+                    /// Step3: 😎 Let's wrap SwiftUI Views in it using trailing closure.
+                    self.navigationView
         }
     }
 }
 
 // MARK: - Views
-extension ItemList {
+extension ItemListView {
     var navigationView: some View {
         NavigationView {
             listView
@@ -50,10 +61,8 @@ extension ItemList {
     }
 
     var listView: some View {
-        List(viewModel.items, id: \.id) { item in
-            ItemRow(item: item).onAppear {
-                self.viewModel.appearItem(id:item.id)
-            }
+        List(self.viewModel.searchedItems, id: \.id) { item in
+            ItemRow(item: item)
         }
         .navigationBarTitle(Text("Photos"))
     }

@@ -52,11 +52,11 @@ extension CombineNetwork: FetchItemUrlMakeable {
         if let page = page {
             components.queryItems = [
                 URLQueryItem(name: "page", value: "\(page)"),
-                URLQueryItem(name: "limit", value: "200")
+                URLQueryItem(name: "limit", value: "400")
             ]
         } else {
             components.queryItems = [
-                URLQueryItem(name: "limit", value: "200")
+                URLQueryItem(name: "limit", value: "400")
             ]
         }
 

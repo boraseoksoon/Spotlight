@@ -12,12 +12,36 @@ import SwiftUI
 class ItemListViewModel: ObservableObject {
     @Published var showingAlert: Bool = false
     @Published var errorMessage: String = ""
-    @Published var items: [Photo] = [] {
+    
+    var searchedItems: [Photo] = []
+    
+    var searchText: String = "" {
         didSet {
-            self.bind(items: self.items)
+            DispatchQueue.global().async {
+                let res = self.model.search(from: self.items,
+                                            forKeyword: self.searchText)
+                
+                DispatchQueue.main.async {
+                    self.searchedItems = res
+                }
+            }
         }
     }
-    
+
+    /// Original Data. Do not mutate unless it is fetched automatically.
+    private var items: [Photo] = [] {
+        didSet {
+            DispatchQueue.global().async {
+                let res = self.model.search(from: self.items,
+                                            forKeyword: self.searchText)
+                
+                DispatchQueue.main.async {
+                    self.searchedItems = res
+                }
+            }
+        }
+    }
+
     private let itemId = PassthroughSubject<Int?, CombineNetworkError>()
     private var cancellables = Set<AnyCancellable>()
     
@@ -41,8 +65,18 @@ class ItemListViewModel: ObservableObject {
         }
     }
 
+    private let model: ItemListModel
     init(model: ItemListModel = ItemListModel(network: CombineNetwork())) {
+        self.model = model
+        
         self.bind(model: model)
+        
+        do {
+            self.searchableItems = try ReadRawFile(fileName: "authors")
+                .components(separatedBy: "!!!")
+        } catch {
+            fatalError("search data read failed!")
+        }
     }
 }
 
@@ -56,31 +90,8 @@ extension ItemListViewModel {
 
 // MARK: - Private methods
 extension ItemListViewModel {
-    private func bind(items: [Photo]) -> Void {
-        
-        ///
-        /// To collect authorName into search keywords to be used in `Spotlight`.
-        Just(Array(
-            OrderedSet<String>(
-                items
-                .compactMap { String($0.name ?? "") }
-            )
-        ))
-        .subscribe(on: DispatchQueue.global())
-        .sink(
-            receiveCompletion: {
-                if case .failure(let error) = $0 {
-                    print("bindItems error : \(error)")
-                }
-            },
-            receiveValue:  {
-                self.searchableItems = $0
-            }
-        )
-        .store(in: &cancellables)
-    }
-    
     private func bind(model: ItemListModel) {
+        
         itemId
             .map { model.getPage(items: self.items, id: $0) }
             .filter { $0 != nil }
@@ -97,29 +108,11 @@ extension ItemListViewModel {
                 },
                 receiveValue:  { items in
                     self.items += items
-                    
+   
                     self.downloadImages(from:items)
                 }
             )
             .store(in: &cancellables)
-        
-        /// To collect search keywords from file
-        ///
-//        if let keywords = model.getSearchKeywords() {
-//            keywords
-//                .receive(on: DispatchQueue.global())
-//                .sink(
-//                    receiveCompletion: { _ in },
-//                    receiveValue: { countries in
-//                        self.searchableItems = Array(
-//                            OrderedSet<String>(
-//                                countries.compactMap { String($0.country) }
-//                            )
-//                        )
-//                    }
-//                )
-//                .store(in: &self.cancellables)
-//        }
     }
     
     private func downloadImages(from items: [Photo]) -> Void {
@@ -139,5 +132,5 @@ extension ItemListViewModel {
                     .store(in: &self.cancellables)
             }
         }
-    }
+    }    
 }

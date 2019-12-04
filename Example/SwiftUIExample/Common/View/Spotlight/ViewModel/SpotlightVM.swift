@@ -15,15 +15,18 @@ class SpotlightVM: ObservableObject {
     @Published var searchingText: String = ""
     @Published var founds: [String] = []
 
+    var didChangeSearchText: (String) -> Void
+    
     let model: SpotlightModel
     let searchResultSubject = PassthroughSubject<[SearchResult], SpotlightError>()
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(searchKeywords: [String]) {
+    init(searchKeywords: [String], didChangeSearchText: @escaping (String) -> Void) {
+        self.didChangeSearchText = didChangeSearchText
+        
         model = SpotlightModel(searchKeywords: searchKeywords,
                                searchResultSubject:searchResultSubject)
-        
         bind()
     }
 }
@@ -33,12 +36,15 @@ extension SpotlightVM {
     private func bind() {
         _ = $searchingText
                 .dropFirst(1)
-                .debounce(for: .seconds(0.25),
-                          scheduler: DispatchQueue(label: "SpotlightVM"))
-                .sink(receiveValue: model.searchItems(forKeyword:))
+                .debounce(for: .seconds(0.0),
+                          scheduler: DispatchQueue.main)
+                .sink(receiveValue: {
+                    print("$0 : ", $0)
+                    self.didChangeSearchText($0)
+                    self.model.searchItems(forKeyword:$0)
+                })
                 .store(in: &cancellables)
-        
-        
+
         searchResultSubject
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {

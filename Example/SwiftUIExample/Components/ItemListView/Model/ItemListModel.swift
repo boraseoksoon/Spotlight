@@ -36,22 +36,17 @@ extension ItemListModel {
         return page
     }
     
-    /// Read Search Keywords from the file onto memory
-    public func getSearchKeywords() -> AnyPublisher<[SearchCountry], IOError>? {
-        return try? ReadJSON(fileName: "country")
+    public func search(from items: [Photo],
+                       forKeyword searchingText: String) -> [Photo] {
+        return items
+            .filter {
+                if searchingText == "" {
+                    return true
+                } else {
+                    return $0.author
+                        .lowercased()
+                        .contains(searchingText.lowercased())
+                }
+        }
     }
 }
-
-// MARK: - Private Methods
-extension ItemListModel {
-
-    //
-}
-
-import Foundation
-
-struct SearchCountry: Codable, Hashable, Equatable {
-    var country: String
-    var city: String?
-}
-

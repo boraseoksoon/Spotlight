@@ -11,7 +11,6 @@ import Combine
 
 struct SpotlightModel {
     var searchKeywords: [String]
-    
     let searchResultSubject: PassthroughSubject<[SearchResult], SpotlightError>
 }
 
@@ -19,23 +18,18 @@ struct SpotlightModel {
 extension SpotlightModel {
     // TODO:
     public func searchItems(forKeyword searchingText: String) -> Void {
-        DispatchQueue.global().async {
-            let founds = self.searchKeywords
-                .filter {
-                    if searchingText == "" {
-                        return false
-                    } else {
-                        return $0
-                            .lowercased()
-                            .contains(searchingText.lowercased())
-                    }
-            }
-
-            DispatchQueue.main.async {
-                // self.founds = founds
-                self.searchResultSubject.send(founds)
-            }
+        let founds = self.searchKeywords
+            .filter {
+                if searchingText == "" {
+                    return false
+                } else {
+                    return $0
+                        .lowercased()
+                        .contains(searchingText.lowercased())
+                }
         }
+
+        searchResultSubject.send(founds)
     }
 
 }
