@@ -10,20 +10,8 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
+    // MARK: - Body
     var body: some View {
-        TabView {
-            ItemListView()
-                .tabItem {
-                    Image(systemName:"safari")
-                    Text("Photos")
-                }
-            
-            GridView()
-                .tabItem {
-                    Image(systemName: "grid")
-                    Text("Grid")
-            }
-        }
-        .edgesIgnoringSafeArea(.top)
+        ItemListView()
     }
 }

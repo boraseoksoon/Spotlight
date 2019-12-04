@@ -9,21 +9,27 @@
 import SwiftUI
 
 struct Spotlight<Content>: View where Content: View {
+    // MARK: - SwiftUI Instance Variables
     @ObservedObject var spotlightVM: SpotlightVM
     @Binding var isSearching: Bool
 
+    // MARK: - Instance Variables
+    
+    // MARK: - Closures
     var didChangeSearchText: (String) -> Void
     var didTapSearchItem: (String) -> Void
     var content: () -> Content
     
+    // MARK: - Initializers
     init(searchKeywords: [String],
          isSearching: Binding<Bool>,
          didChangeSearchText: @escaping (String) -> Void,
          didTapSearchItem: @escaping (String) -> Void,
          wrappingClosure: @escaping () -> Content) {
         
-        UIBarButtonItem.appearance().tintColor = UIColor.blue
-        
+        /// FIXME: THOSE GLOBAL THINGS MAY BE APPLIED TO ALL APP ALTHOUGH MODULE IS SEPARATED.
+        /// BUT, THERE IS NO SUCH THING AS API BY WHICH I CAN MODIFY SWIFTUI.
+        UITableView.appearance().allowsSelection = false
         UITableView.appearance().separatorStyle = .none
         UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().tableFooterView = UIView()
@@ -32,6 +38,7 @@ struct Spotlight<Content>: View where Content: View {
                                                              bottom: 300,
                                                              right: 0)
         
+        UITableViewCell.appearance().selectionStyle = .none
         UITableViewCell.appearance().backgroundColor = .clear
         
         self.content = wrappingClosure
@@ -44,6 +51,7 @@ struct Spotlight<Content>: View where Content: View {
                                        didChangeSearchText: didChangeSearchText)
     }
 
+    // MARK: - Body
     var body: some View {
         return AnyView(
             GeometryReader { geometry in

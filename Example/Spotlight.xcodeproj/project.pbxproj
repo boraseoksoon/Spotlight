@@ -19,7 +19,6 @@
 		476505EF2397924100F1E516 /* ItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505CB2397924100F1E516 /* ItemListModel.swift */; };
 		476505F02397924100F1E516 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505CD2397924100F1E516 /* ItemRow.swift */; };
 		476505F12397924100F1E516 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505CE2397924100F1E516 /* ItemListView.swift */; };
-		476505F22397924100F1E516 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505D12397924100F1E516 /* GridView.swift */; };
 		476505F32397924100F1E516 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505D52397924100F1E516 /* UIImage+Extension.swift */; };
 		476505F42397924100F1E516 /* CombineNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505D72397924100F1E516 /* CombineNetwork.swift */; };
 		476505F52397924100F1E516 /* FetchItemUrlMakeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505D92397924100F1E516 /* FetchItemUrlMakeable.swift */; };
@@ -41,6 +40,7 @@
 		4765061F2397B1AF00F1E516 /* SpotlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4765061E2397B1AF00F1E516 /* SpotlightModel.swift */; };
 		476506232397BCF800F1E516 /* SpotlightError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506222397BCF800F1E516 /* SpotlightError.swift */; };
 		476506262397DA4A00F1E516 /* authors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 476506252397DA4A00F1E516 /* authors.txt */; };
+		47798A022398275200BC37C2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47798A012398275100BC37C2 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +81,6 @@
 		476505CB2397924100F1E516 /* ItemListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListModel.swift; sourceTree = "<group>"; };
 		476505CD2397924100F1E516 /* ItemRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		476505CE2397924100F1E516 /* ItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
-		476505D12397924100F1E516 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		476505D52397924100F1E516 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		476505D72397924100F1E516 /* CombineNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineNetwork.swift; sourceTree = "<group>"; };
 		476505D92397924100F1E516 /* FetchItemUrlMakeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchItemUrlMakeable.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		4765061E2397B1AF00F1E516 /* SpotlightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightModel.swift; path = SwiftUIExample/Common/View/SpotlightModel.swift; sourceTree = SOURCE_ROOT; };
 		476506222397BCF800F1E516 /* SpotlightError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightError.swift; path = SwiftUIExample/Common/View/Spotlight/SpotlightError.swift; sourceTree = SOURCE_ROOT; };
 		476506252397DA4A00F1E516 /* authors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = authors.txt; path = SwiftUIExample/authors.txt; sourceTree = SOURCE_ROOT; };
+		47798A012398275100BC37C2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailView.swift; path = SwiftUIExample/DetailView.swift; sourceTree = SOURCE_ROOT; };
 		8A001061D85C8009A05F8592 /* Pods_Spotlight_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotlight_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1BEEFA3CB7AEC8329ACB83 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9FE0CF52774DB1553B8437CD /* Pods-Spotlight_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotlight_Example.debug.xcconfig"; path = "Target Support Files/Pods-Spotlight_Example/Pods-Spotlight_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 		476505C62397924100F1E516 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				47798A002398274A00BC37C2 /* DetailView */,
 				476505C72397924100F1E516 /* ItemListView */,
-				476505CF2397924100F1E516 /* Grid */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -231,22 +231,6 @@
 			children = (
 				476505CD2397924100F1E516 /* ItemRow.swift */,
 				476505CE2397924100F1E516 /* ItemListView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		476505CF2397924100F1E516 /* Grid */ = {
-			isa = PBXGroup;
-			children = (
-				476505D02397924100F1E516 /* View */,
-				476505D12397924100F1E516 /* GridView.swift */,
-			);
-			path = Grid;
-			sourceTree = "<group>";
-		};
-		476505D02397924100F1E516 /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,6 +410,14 @@
 				476506222397BCF800F1E516 /* SpotlightError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		47798A002398274A00BC37C2 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				47798A012398275100BC37C2 /* DetailView.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -628,6 +620,7 @@
 				476505F82397924100F1E516 /* OrderedSet.swift in Sources */,
 				476506232397BCF800F1E516 /* SpotlightError.swift in Sources */,
 				476505F42397924100F1E516 /* CombineNetwork.swift in Sources */,
+				47798A022398275200BC37C2 /* DetailView.swift in Sources */,
 				4765061F2397B1AF00F1E516 /* SpotlightModel.swift in Sources */,
 				476505FB2397924100F1E516 /* AppDelegate.swift in Sources */,
 				476505EF2397924100F1E516 /* ItemListModel.swift in Sources */,
@@ -635,7 +628,6 @@
 				476506102397A1D300F1E516 /* ClearAllTextModifier.swift in Sources */,
 				476505FE2397924100F1E516 /* SceneDelegate.swift in Sources */,
 				476505F32397924100F1E516 /* UIImage+Extension.swift in Sources */,
-				476505F22397924100F1E516 /* GridView.swift in Sources */,
 				476506172397A45900F1E516 /* Spotlight.swift in Sources */,
 				476505FA2397924100F1E516 /* GenericItem.swift in Sources */,
 				476505EA2397924100F1E516 /* URL+Extension.swift in Sources */,

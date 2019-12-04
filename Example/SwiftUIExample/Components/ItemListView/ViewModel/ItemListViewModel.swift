@@ -66,6 +66,7 @@ class ItemListViewModel: ObservableObject {
     }
 
     private let model: ItemListModel
+    // MARK: - Initializers
     init(model: ItemListModel = ItemListModel(network: CombineNetwork())) {
         self.model = model
         

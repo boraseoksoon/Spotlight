@@ -12,6 +12,7 @@ import Combine
 class CombineNetwork {
     private let session: URLSession
     
+    // MARK: - Initializers
     init(session: URLSession = .shared) {
         self.session = session
     }
@@ -52,11 +53,11 @@ extension CombineNetwork: FetchItemUrlMakeable {
         if let page = page {
             components.queryItems = [
                 URLQueryItem(name: "page", value: "\(page)"),
-                URLQueryItem(name: "limit", value: "400")
+                URLQueryItem(name: "limit", value: "200")
             ]
         } else {
             components.queryItems = [
-                URLQueryItem(name: "limit", value: "400")
+                URLQueryItem(name: "limit", value: "200")
             ]
         }
 

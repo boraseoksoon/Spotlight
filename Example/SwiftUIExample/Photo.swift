@@ -39,8 +39,8 @@ struct Photo: GenericItem, Codable, Identifiable {
         
         self.name = self.author
         self.imageURL = ReplaceUrlResolution(from: self.download_url,
-                                             targetWidth: "120",
-                                             targetHeight: "120")
+                                             targetWidth: "562",
+                                             targetHeight: "1218")
         
         self.description = "\(String(self.width)) * \(String(self.height))"
     }

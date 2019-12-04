@@ -12,6 +12,7 @@ import Combine
 struct ItemListModel {
     let network: Fetchable
     
+    // MARK: - Initializers
     init(network: Fetchable) {
         self.network = network
     }

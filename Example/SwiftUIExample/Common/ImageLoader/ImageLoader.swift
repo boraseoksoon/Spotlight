@@ -19,6 +19,7 @@ final class ImageLoader: ObservableObject {
     private let loadable: ImageLoadable
     private var cancellable: AnyCancellable?
 
+    // MARK: - Initializers
     init(loadable: ImageLoadable, id: Int) {
         self.loadable = loadable
 

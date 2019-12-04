@@ -13,15 +13,18 @@ import SwiftUI
 
 struct ItemListView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     @ObservedObject var viewModel: ItemListViewModel
     @State private var isSearching = false
+    @State var showingDetail = false
     
+    // MARK: - Initializers
     init(viewModel: ItemListViewModel = ItemListViewModel()) {
         /// This is example view-mdel implemented for demo purpose.
         self.viewModel = viewModel
     }
     
+    // MARK: - Body
     var body: some View {
         /// Step2: 😆 Declare `Spotlight` externally.
         Spotlight(searchKeywords:viewModel.searchableItems,
@@ -59,7 +62,9 @@ extension ItemListView {
 
     var listView: some View {
         List(self.viewModel.searchedItems, id: \.id) { item in
-            ItemRow(item: item)
+            NavigationLink(destination: DetailView(item: item)) {
+                ItemRow(item: item)
+            }
         }
         .navigationBarTitle(Text("Photos"))
     }

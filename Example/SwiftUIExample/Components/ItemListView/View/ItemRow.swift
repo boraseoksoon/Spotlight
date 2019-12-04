@@ -36,17 +36,21 @@ extension ItemRow {
             Image(uiImage: imageLoader.image ?? UIImage(systemName: "xmark") ?? UIImage())
                 .resizable()
                 .clipShape(Circle())
-                .frame(width: 120.0, height: 120.0, alignment: .center)
+                .frame(width: 180.0,
+                       height: 180.0,
+                       alignment: .center)
+                .scaledToFit()
                 .overlay(Circle().stroke(Color.white,lineWidth:2).shadow(radius: 10))
             
             VStack(alignment: .leading) {
                 Text("Author: \(item.name ?? "unknown author")")
-                    .font(Font.system(size: 14, weight: .regular, design: .default))
+                    .font(Font.system(size: 16, weight: .regular, design: .default))
                     .foregroundColor(.blue)
                     .padding([.bottom], 10)
+                    .lineLimit(3)
                 
                 Text("Size: \(item.description ?? "")")
-                    .font(Font.system(size: 12, weight: .light, design: .default))
+                    .font(Font.system(size: 14, weight: .light, design: .default))
                     .foregroundColor(.gray)
                     .lineLimit(3)
             }
