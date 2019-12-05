@@ -32,7 +32,6 @@
 		476505FE2397924100F1E516 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476505E62397924100F1E516 /* SceneDelegate.swift */; };
 		476506052397989500F1E516 /* IOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506042397989500F1E516 /* IOError.swift */; };
 		476506072397989E00F1E516 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506062397989E00F1E516 /* NetworkError.swift */; };
-		4765060B2397A1B700F1E516 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4765060A2397A1B700F1E516 /* Constants.swift */; };
 		476506142397A41600F1E516 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506132397A41600F1E516 /* BlurView.swift */; };
 		476506262397DA4A00F1E516 /* authors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 476506252397DA4A00F1E516 /* authors.txt */; };
 		47798A022398275200BC37C2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47798A012398275100BC37C2 /* DetailView.swift */; };
@@ -90,7 +89,6 @@
 		476505FF2397929D00F1E516 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		476506042397989500F1E516 /* IOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IOError.swift; path = SwiftUIExample/Common/IOError.swift; sourceTree = SOURCE_ROOT; };
 		476506062397989E00F1E516 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		4765060A2397A1B700F1E516 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		476506132397A41600F1E516 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		476506252397DA4A00F1E516 /* authors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = authors.txt; path = SwiftUIExample/authors.txt; sourceTree = SOURCE_ROOT; };
 		47798A012398275100BC37C2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailView.swift; path = SwiftUIExample/DetailView.swift; sourceTree = SOURCE_ROOT; };
@@ -320,7 +318,6 @@
 		476506092397A0AD00F1E516 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				4765060A2397A1B700F1E516 /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -533,7 +530,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				476505ED2397924100F1E516 /* Photo.swift in Sources */,
-				4765060B2397A1B700F1E516 /* Constants.swift in Sources */,
 				476505F62397924100F1E516 /* ImageLoadable.swift in Sources */,
 				476505EE2397924100F1E516 /* ItemListViewModel.swift in Sources */,
 				476506052397989500F1E516 /* IOError.swift in Sources */,
