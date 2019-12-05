@@ -22,38 +22,23 @@ At a Glance
 
 ```swift
 
+// MARK: - Body
 var body: some View {
-    /// 😊 That's it.
-    Spotlight(imagesToZoom: imagesToZoom,
-                         powerOfZoomBounce: .regular,
-                         numberOfColumns: 200,
-                         numberOfRows: 10,
-                         didLongPressItem: { selectedImage in
-                            print("on long press : ", selectedImage)
-                            /// Grab an image user end up choosing.
-                            self.selectedImage = selectedImage
-                            
-                            /// Present!
-                            self.showSelectedImageView.toggle()
-                         },
-                         didFinishDraggingOnItem: { selectedImage in
-                            print("on drag finish : ", selectedImage)
-    })
-    .edgesIgnoringSafeArea(.all)
-    .sheet(isPresented:self.$showSelectedImageView) {
-        /// The example view showing a picked up image.
-        ShowingSelectedImageView(selectedImage: self.selectedImage)
+    Spotlight(searchKeywords:viewModel.searchableItems,
+              isSearching:$isSearching,
+              didChangeSearchText: { self.viewModel.searchText = $0 },
+              didTapSearchItem: { self.viewModel.searchText = $0 }) {
+                
+                Text("Your View Goes here")
     }
 }
 ```
 
 ## Features
 
-- [x] Designed for SwiftUI, SwiftUI 100% is supported.
-- [x] Complex grid ScrollView UI is provided out of box.
-- [x] Tracking user touch area on the grid scrollview, Zooming items is done out of box.
-- [x] Spotlight will return an image selected by a user, detected by the internal long press and pan gesture inside out of box. 
-- [x] Grid UI can be styled for number of columns, rows, zoom effect and images you would like to input to show in the grid.
+- [x] Written in SwiftUI and Combine 100%.  
+- [x] It aims to provide quick and beautiful search UI/UX out of box like macOS Spotlight Search in iOS. 
+- [x] MVVM 
 
 <br>
 
@@ -77,117 +62,36 @@ Getting Started
 ```Swift
 import SwiftUI
 
-/// 🥳 # Step1: let's import!
+/// Step1: 😙 import `Spotlight`
 import Spotlight
 
-struct ContentView: View {
-    var itemsToZoom: [UIImage] = {
-        var images = [UIImage]()
-        for i in 0...29 {
-            images.append(UIImage(named: "yourImage\(i)") ?? UIImage())
-        }
-        return images
-    }()
-    
+struct ItemListView: View {
+    @ObservedObject var viewModel: YOUR_VIEW_MODEL = YOUR_VIEW_MODEL()
+    @State private var isSearching = false
+
+    // MARK: - Body
     var body: some View {
-        /// 😊 # Step2. That's it. completed!
-        Spotlight(itemsToZoom: itemsToZoom,
-                             powerOfZoomBounce: .regular,
-                             isBeingDraggingOnItem:{ selectedImage in
-                                ///
-                             },
-                             didLongPressItem: { selectedImage in
-                                /// Grab an image user end up choosing.
-                             },
-                             didFinishDraggingOnItem: { selectedImage in
-                                /// Grab an image user end up choosing.
-        })
-        .edgesIgnoringSafeArea(.all)
+    
+        /// Step2: 😆 Declare `Spotlight` externally.
+        Spotlight(searchKeywords:viewModel.searchableItems, // search keyword list as string array
+                  isSearching:$isSearching,                 // Spotlight appears when true.
+                  /// Step3: 😎 Whenever typing searching any keywords, and tap the suggested keywords,
+                  /// those goes below. do your implementation as you need.
+                  didChangeSearchText: { self.viewModel.searchText = $0 },
+                  didTapSearchItem: { self.viewModel.searchText = $0 }) {
+                    
+                    /// Step4: 😎 Let's wrap SwiftUI Views in it, using trailing closure.
+                    Text("Your View")
+        }
     }
 }
 ```
-
-* UIKit
-```Swift
-///
-/// To use Spotlight,
-/// Please, Follow steps written in the comments with icon like 😀.
-///
-
-import SwiftUI
-import UIKit
-
-///
-// 😚 #Step1: import Spotlight!
-///
-import Spotlight
-
-class ViewController: UIViewController {
-    
-    ///
-    // 😋 #Step2: declare Spotlight
-    ///
-    private lazy var zoomGridScrollViewController: SpotlightController = { [unowned self] in
-        ///
-        /// It can be used on both SwiftUI and UIKit.
-        /// To see how it works on SwiftUI,
-        /// please refer to comments in SwiftUI directory -> ContentView.swift
-        ///
-        return SpotlightController(itemsToZoom: self.itemsToZoom,
-                                              powerOfZoomBounce: .regular,
-                                              scrollEnableButtonTintColor: .black,
-                                              scrollEnableButtonBackgroundColor: .white,
-                                              isBeingDraggingOnItem:{ [unowned self] selectedImage in
-                                                 ///
-                                              },
-                                              didLongPressItem: { [unowned self] selectedImage in
-                                                /// Grab an image user end up choosing.
-                                              },
-                                              didFinishDraggingOnItem: { [unowned self] selectedImage in
-                                                /// on drag finished
-                                              })
-    }()
-    
-    ///
-    // prepare any item array to feed to SpotlightController.
-    ///
-    private var itemsToZoom: [Any] = {
-        var images = [UIImage]()
-        for i in 0...29 {
-            images.append(UIImage(named: "s\(i)") ?? UIImage())
-        }
-        return images
-    }()
-    
-    ///
-    // 😁 #Step3: Present it!
-    ///
-    @IBAction func goToSpotlight(_ sender: Any) {
-        ///
-        // 😎 That's all. well done.
-        ///
-        self.present(zoomGridScrollViewController,
-                     animated: true,
-                     completion: nil)
-    }
-    
-    ///
-    // MARK: - ViewController LifeCycle Methods
-    ///
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
 
 ```
 
 ## Installation
 
-There are four ways to use Spotlight in your project:
+There are three ways to use Spotlight in your project:
 - using CocoaPods
 - using Swift Package Manager
 - manual install (build frameworks or embed Xcode Project)

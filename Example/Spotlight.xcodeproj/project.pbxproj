@@ -33,12 +33,7 @@
 		476506052397989500F1E516 /* IOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506042397989500F1E516 /* IOError.swift */; };
 		476506072397989E00F1E516 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506062397989E00F1E516 /* NetworkError.swift */; };
 		4765060B2397A1B700F1E516 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4765060A2397A1B700F1E516 /* Constants.swift */; };
-		476506102397A1D300F1E516 /* ClearAllTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4765060F2397A1D300F1E516 /* ClearAllTextModifier.swift */; };
 		476506142397A41600F1E516 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506132397A41600F1E516 /* BlurView.swift */; };
-		476506172397A45900F1E516 /* Spotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506162397A45900F1E516 /* Spotlight.swift */; };
-		4765061C2397AE9B00F1E516 /* SpotlightVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4765061B2397AE9B00F1E516 /* SpotlightVM.swift */; };
-		4765061F2397B1AF00F1E516 /* SpotlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4765061E2397B1AF00F1E516 /* SpotlightModel.swift */; };
-		476506232397BCF800F1E516 /* SpotlightError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476506222397BCF800F1E516 /* SpotlightError.swift */; };
 		476506262397DA4A00F1E516 /* authors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 476506252397DA4A00F1E516 /* authors.txt */; };
 		47798A022398275200BC37C2 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47798A012398275100BC37C2 /* DetailView.swift */; };
 /* End PBXBuildFile section */
@@ -96,12 +91,7 @@
 		476506042397989500F1E516 /* IOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IOError.swift; path = SwiftUIExample/Common/IOError.swift; sourceTree = SOURCE_ROOT; };
 		476506062397989E00F1E516 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4765060A2397A1B700F1E516 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		4765060F2397A1D300F1E516 /* ClearAllTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClearAllTextModifier.swift; path = SwiftUIExample/Common/ClearAllTextModifier.swift; sourceTree = SOURCE_ROOT; };
 		476506132397A41600F1E516 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		476506162397A45900F1E516 /* Spotlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotlight.swift; sourceTree = "<group>"; };
-		4765061B2397AE9B00F1E516 /* SpotlightVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightVM.swift; sourceTree = "<group>"; };
-		4765061E2397B1AF00F1E516 /* SpotlightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightModel.swift; path = SwiftUIExample/Common/View/SpotlightModel.swift; sourceTree = SOURCE_ROOT; };
-		476506222397BCF800F1E516 /* SpotlightError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightError.swift; path = SwiftUIExample/Common/View/Spotlight/SpotlightError.swift; sourceTree = SOURCE_ROOT; };
 		476506252397DA4A00F1E516 /* authors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = authors.txt; path = SwiftUIExample/authors.txt; sourceTree = SOURCE_ROOT; };
 		47798A012398275100BC37C2 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailView.swift; path = SwiftUIExample/DetailView.swift; sourceTree = SOURCE_ROOT; };
 		8A001061D85C8009A05F8592 /* Pods_Spotlight_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotlight_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,7 +161,6 @@
 				476505C02397924100F1E516 /* URL+Extension.swift */,
 				476505C12397924100F1E516 /* Preview Content */,
 				476505C32397924100F1E516 /* LaunchScreen.storyboard */,
-				476505C52397924100F1E516 /* Photo.swift */,
 				476505C62397924100F1E516 /* Components */,
 				476505D22397924100F1E516 /* Common */,
 				476505E22397924100F1E516 /* GenericItem.swift */,
@@ -257,6 +246,7 @@
 		476505D32397924100F1E516 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				476505C52397924100F1E516 /* Photo.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -339,28 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				476506182397A46800F1E516 /* View */,
-				476506152397A45100F1E516 /* Spotlight */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		4765060E2397A1C600F1E516 /* ViewModifier */ = {
-			isa = PBXGroup;
-			children = (
-				4765060F2397A1D300F1E516 /* ClearAllTextModifier.swift */,
-			);
-			path = ViewModifier;
-			sourceTree = "<group>";
-		};
-		476506152397A45100F1E516 /* Spotlight */ = {
-			isa = PBXGroup;
-			children = (
-				476506202397BCD900F1E516 /* Others */,
-				4765061D2397AE9D00F1E516 /* Model */,
-				4765061A2397AE8F00F1E516 /* ViewModel */,
-				476506192397AE8D00F1E516 /* View */,
-			);
-			path = Spotlight;
 			sourceTree = "<group>";
 		};
 		476506182397A46800F1E516 /* View */ = {
@@ -369,47 +339,6 @@
 				476506132397A41600F1E516 /* BlurView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		476506192397AE8D00F1E516 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4765060E2397A1C600F1E516 /* ViewModifier */,
-				476506162397A45900F1E516 /* Spotlight.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4765061A2397AE8F00F1E516 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4765061B2397AE9B00F1E516 /* SpotlightVM.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		4765061D2397AE9D00F1E516 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4765061E2397B1AF00F1E516 /* SpotlightModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		476506202397BCD900F1E516 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				476506212397BCF000F1E516 /* Error */,
-			);
-			path = Others;
-			sourceTree = "<group>";
-		};
-		476506212397BCF000F1E516 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				476506222397BCF800F1E516 /* SpotlightError.swift */,
-			);
-			path = Error;
 			sourceTree = "<group>";
 		};
 		47798A002398274A00BC37C2 /* DetailView */ = {
@@ -608,7 +537,6 @@
 				476505F62397924100F1E516 /* ImageLoadable.swift in Sources */,
 				476505EE2397924100F1E516 /* ItemListViewModel.swift in Sources */,
 				476506052397989500F1E516 /* IOError.swift in Sources */,
-				4765061C2397AE9B00F1E516 /* SpotlightVM.swift in Sources */,
 				476505F52397924100F1E516 /* FetchItemUrlMakeable.swift in Sources */,
 				476505F02397924100F1E516 /* ItemRow.swift in Sources */,
 				476505F92397924100F1E516 /* ImageLoader.swift in Sources */,
@@ -618,17 +546,13 @@
 				476505F12397924100F1E516 /* ItemListView.swift in Sources */,
 				476505E82397924100F1E516 /* Functions.swift in Sources */,
 				476505F82397924100F1E516 /* OrderedSet.swift in Sources */,
-				476506232397BCF800F1E516 /* SpotlightError.swift in Sources */,
 				476505F42397924100F1E516 /* CombineNetwork.swift in Sources */,
 				47798A022398275200BC37C2 /* DetailView.swift in Sources */,
-				4765061F2397B1AF00F1E516 /* SpotlightModel.swift in Sources */,
 				476505FB2397924100F1E516 /* AppDelegate.swift in Sources */,
 				476505EF2397924100F1E516 /* ItemListModel.swift in Sources */,
 				476506142397A41600F1E516 /* BlurView.swift in Sources */,
-				476506102397A1D300F1E516 /* ClearAllTextModifier.swift in Sources */,
 				476505FE2397924100F1E516 /* SceneDelegate.swift in Sources */,
 				476505F32397924100F1E516 /* UIImage+Extension.swift in Sources */,
-				476506172397A45900F1E516 /* Spotlight.swift in Sources */,
 				476505FA2397924100F1E516 /* GenericItem.swift in Sources */,
 				476505EA2397924100F1E516 /* URL+Extension.swift in Sources */,
 			);

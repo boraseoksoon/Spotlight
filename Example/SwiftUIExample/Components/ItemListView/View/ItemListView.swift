@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// Step1: 😙 import `Spotlight`
-// import Spotlight
+import Spotlight
 
 struct ItemListView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
